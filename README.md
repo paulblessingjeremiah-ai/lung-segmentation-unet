@@ -6,11 +6,13 @@ A U-Net that segments the lungs in chest X-rays, written from scratch in PyTorch
 
 Evaluated once on 106 held-out test images, which were not used for training or for choosing the checkpoint.
 
-| Subset | Images | Dice (mean) | IoU (mean) |
-|---|---|---|---|
-| All | 106 | 0.9615 (std 0.0332) | 0.9276 (std 0.0573) |
-| Montgomery | 21 | 0.9765 | 0.9545 |
-| Shenzhen | 85 | 0.9578 | 0.9210 |
+| Subset | Images | Dice mean (std) | Dice median | IoU mean |
+|---|---|---|---|---|
+| All | 106 | 0.9615 (0.0332) | 0.9736 | 0.9276 |
+| Montgomery | 21 | 0.9765 (0.0142) | 0.9800 | 0.9545 |
+| Shenzhen | 85 | 0.9578 (0.0354) | 0.9714 | 0.9210 |
+
+The median is higher than the mean because a few hard cases pull the mean down.
 
 The best checkpoint was chosen on a separate validation set (Dice 0.9676 at epoch 34). Train and validation curves stay close together, so there is no sign of overfitting.
 
